@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @hook.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @hook.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Tag</h1>
+    <p>
+      <%=raw @hook.tag %>
+    </p>
+  </section>
+  <section>
+    <h1>Status</h1>
+    <p>
+      <%=raw @hook.status %>
+    </p>
+  </section>
+  <section>
+    <h1>Alt</h1>
+    <p>
+      <%=raw @hook.alt %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="hooks">
+      <% @hooks.each do |hook| %>
+        <li>
+          <%= link_to hook.name, refinery.hooks_hook_path(hook) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

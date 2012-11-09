@@ -1,0 +1,25 @@
+<h2>Pages that contains {{<%= @hook.tag %>}} tag</h2>
+<div id="content" class="clearfix"> 
+  <section id="records">
+    <div class="pagination_container" style="min-height: 91px;">
+
+      <ul id="sortable_list" class="ui-sortable">
+        <% @pages.each do |page| %>
+          <li class="clearfix record <%= cycle("on", "on-hover") %>" id="<%= "page_#{page.id}"%>">
+            <div class="clearfix">
+              <span class="title">
+                <%= page.title %> [<%= page.nested_path %>]
+              </span>
+              <span class="actions">
+                <%= link_to refinery_icon_tag('application_go.png'),
+                  refinery.edit_admin_page_path(page.nested_url),
+                  :title => t('refinery.admin.pages.edit') %>
+              </span>
+
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,30 @@
+sk:
+  refinery:
+    plugins:
+      hooks:
+        title: Hooks
+    hooks:
+      admin:
+        hooks:
+          actions:
+            create_new: Pridať Hook
+            reorder: Preusporiadať Hooks
+            reorder_done: Koniec radenia Hooks
+          records:
+            title: Hooks
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Hooks. Kliknite na "Pridať Hook" pre pridanie prvého hook.
+          hook:
+            view_live_html: Zobraziť náhľad hook<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť hook
+            delete: Zmazať hook
+      hooks:
+        show:
+          other: Daľšie Hooks
+  activerecord:
+    attributes:
+      'refinery/hooks/hook':
+        name: Name
+        tag: Tag
+        status: Status
+        alt: Alt

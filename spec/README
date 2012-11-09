@@ -1,0 +1,5 @@
+Before running RSpec, runs
+
+RAILS_ENV=test rake app:refinery:hooks:test_prepare
+
+This will copy the test hooks, and register those hooks in test mode.

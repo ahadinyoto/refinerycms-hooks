@@ -1,0 +1,24 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(hook) -%>">
+  <span class='title'>
+    <%= hook.name %>
+
+  </span>
+  <span class='actions'>
+    
+    <%#= link_to refinery_icon_tag("application_go.png"), refinery.hooks_hook_path(hook),
+        :title => t('.view_live_html'),
+        :target => "_blank" %>
+    
+    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_hooks_admin_hook_path(hook),
+         :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"), refinery.hooks_admin_hook_path(hook),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'refinery.admin.delete', :title => hook.name),
+        :method => :delete %>
+
+    <%#= # FIXME I18n this! %>
+    <%= link_to refinery_icon_tag("hook_search.png"), refinery.find_pages_hooks_admin_hook_path(hook),
+        :title => "Search pages that contain this hook<br/>(may take some time for large site)" %>
+  </span>
+</li>

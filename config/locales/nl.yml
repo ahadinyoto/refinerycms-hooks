@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      hooks:
+        title: Hooks
+    hooks:
+      admin:
+        hooks:
+          actions:
+            create_new: Maak een nieuwe Hook
+            reorder: Wijzig de volgorde van de Hooks
+            reorder_done: Klaar met het wijzingen van de volgorde van de Hooks
+          records:
+            title: Hooks
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Hooks. Druk op 'Maak een nieuwe Hook' om de eerste aan te maken.
+          hook:
+            view_live_html: Bekijk deze hook op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze hook
+            delete: Verwijder deze hook voor eeuwig
+      hooks:
+        show:
+          other: Andere Hooks
+  activerecord:
+    attributes:
+      'refinery/hooks/hook':
+        name: Name
+        tag: Tag
+        status: Status
+        alt: Alt

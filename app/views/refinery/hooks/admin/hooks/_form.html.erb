@@ -1,0 +1,57 @@
+<%= form_for [refinery, :hooks_admin, @hook] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @hook,
+              :include_object_name => true %>
+
+  
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tag, "Tag (can't be changed)" -%>
+    <%#= f.text_field :tag, :class => 'larger widest' -%>
+    <%= @hook.tag -%>
+  </div>
+  
+  <div id="status-label" style="margin-top: 1em; font-weight:bold">Status</div>
+    <% Refinery::Hooks::Hook.status_list.each do |s| %>
+      <div class='field'>
+        <%= f.radio_button :status, s[:status], { :style => "margin-bottom:0px" } %>
+        <%= f.label "status_#{s[:status]}".to_sym, s[:label], { :style => "margin-top:0px; display:inline; font-weight: normal" } -%>
+    </div>
+  <% end %>
+  
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:alt].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/hooks/hook", :default => part.to_s.titleize), "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+      <div id='page_part_editors'>
+        <% [:alt].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.hooks.admin.hooks.hook'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @hook.name) %>
+<% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>

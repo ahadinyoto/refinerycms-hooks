@@ -1,0 +1,31 @@
+es:
+  refinery:
+    plugins:
+      hooks:
+        title: Hooks
+#        article: masculino/femenino
+    hooks:
+      admin:
+        hooks:
+          actions:
+            create_new: Crear nuevo hook
+            reorder: Reordenar hooks
+            reorder_done: Reordenación de hooks completada
+          records:
+            title: Hooks
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay hooks todavía. Pulsa en "Crear nuevo Hook" para crear tu primer hook.
+          hook:
+            view_live_html: Ver este hook como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este hook
+            delete: Borrar este hook para siempre
+      hooks:
+        show:
+          other: Otros hooks
+  activerecord:
+    attributes:
+      'refinery/hooks/hook':
+        name: Name
+        tag: Tag
+        status: Status
+        alt: Alt

@@ -1,0 +1,31 @@
+en:
+  refinery:
+    plugins:
+      hooks:
+        title: Hooks
+    hooks:
+      admin:
+        hooks:
+          actions:
+            create_new: Add New Hook
+            reorder: Reorder Hooks
+            reorder_done: Done Reordering Hooks
+          records:
+            title: Hooks
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Hooks yet. Click "Add New Hook" to add your first hook.
+            no_hooks: There are no hooks yet. Use the generator to create new hook (or contact your system admin).
+          hook:
+            view_live_html: View this hook live <br/><em>(opens in a new window)</em>
+            edit: Edit this hook
+            delete: Remove this hook forever
+      hooks:
+        show:
+          other: Other Hooks
+  activerecord:
+    attributes:
+      'refinery/hooks/hook':
+        name: Name
+        tag: Tag
+        status: Status
+        alt: Alt

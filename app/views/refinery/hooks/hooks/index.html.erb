@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="hooks">
+    <% @hooks.each do |hook| %>
+      <li>
+        <%= link_to hook.name, refinery.hooks_hook_path(hook) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

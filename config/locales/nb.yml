@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      hooks:
+        title: Hooks
+    hooks:
+      admin:
+        hooks:
+          actions:
+            create_new: Lag en ny Hook
+            reorder: Endre rekkefølgen på Hooks
+            reorder_done: Ferdig å endre rekkefølgen Hooks
+          records:
+            title: Hooks
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Hooks enda. Klikk på "Lag en ny Hook" for å legge til din første hook.
+          hook:
+            view_live_html: Vis hvordan denne hook ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne hook
+            delete: Fjern denne hook permanent
+      hooks:
+        show:
+          other: Andre Hooks
+  activerecord:
+    attributes:
+      'refinery/hooks/hook':
+        name: Name
+        tag: Tag
+        status: Status
+        alt: Alt

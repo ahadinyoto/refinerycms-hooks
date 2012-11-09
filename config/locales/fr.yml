@@ -1,0 +1,30 @@
+fr:
+  refinery:
+    plugins:
+      hooks:
+        title: Hooks
+    hooks:
+      admin:
+        hooks:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Hook
+            reorder: Réordonner les Hooks
+            reorder_done: Fin de réordonnancement des Hooks
+          records:
+            title: Hooks
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Hook. Cliquer sur "Créer un(e) nouve(au/l/lle) Hook" pour créer votre premi(er/ère) hook.'
+          hook:
+            view_live_html: Voir ce(t/tte) hook <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) hook
+            delete: Supprimer définitivement ce(t/tte) hook
+      hooks:
+        show:
+          other: Autres Hooks
+  activerecord:
+    attributes:
+      'refinery/hooks/hook':
+        name: Name
+        tag: Tag
+        status: Status
+        alt: Alt
