@@ -21,6 +21,7 @@ module Refinery
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Hooks)
+        Rails.logger.debug("=/=====> #SEND")
       end
     end
   end

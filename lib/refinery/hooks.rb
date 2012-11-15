@@ -1,4 +1,5 @@
 require 'refinerycms-core'
+require 'refinery/hooks/renderer'
 
 module Refinery
   autoload :HooksGenerator, 'generators/refinery/hooks_generator'
@@ -19,5 +20,7 @@ module Refinery
         @factory_paths ||= [ root.join('spec', 'factories').to_s ]
       end
     end
+
+    ApplicationController.send :include, Refinery::Hooks::Renderer
   end
 end

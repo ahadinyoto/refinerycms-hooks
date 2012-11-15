@@ -10,7 +10,7 @@ namespace :refinery do
       rm "spec/dummy/app/controllers/application_controller.rb"
 
       # Copy the application_controller loaded with hook renderer
-      cp "spec/files/application_controller.rb", "spec/dummy/app/controllers/application_controller.rb"
+      #cp "spec/files/application_controller.rb", "spec/dummy/app/controllers/application_controller.rb"
       cp "spec/files/hooks.rb", "spec/dummy/config/initializers/refinery"
 
       # Copy the tests hooks

@@ -46,7 +46,6 @@ describe Refinery do
             hook.save!
 
             visit '/test2'
-            save_and_open_page
             page.should_not have_content("Replaced-Test2Hook")
             hook.status = "enabled"
             hook.save!
@@ -60,7 +59,6 @@ describe Refinery do
             click_button "Save"
 
             visit '/test3'
-            save_and_open_page
             page.should have_content("one|two")
           end
 
