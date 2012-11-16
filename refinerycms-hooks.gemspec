@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.author            = "Andrew Hadinyoto"
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-hooks'
-  s.version           = '0.0'
+  s.version           = '0.1'
   s.description       = 'Ruby on Rails Hooks extension for Refinery CMS'
   s.date              = '2012-09-26'
   s.summary           = 'Hooks extension for Refinery CMS'
