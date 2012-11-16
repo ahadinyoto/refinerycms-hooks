@@ -1,0 +1,76 @@
+h1. Hooks extension for Refinery CMS.
+
+A "RefineryCMS":http://refinerycms.com/ extension to make *Page* a bit more dynamic.
+
+The "hook" is a simple markup that you can put in a *Page* "Body" and "Side Body", and based on the hook that you write, the markup will be rendered accordingly.
+
+The hook simply adds a bit of intelligent and makes it more dynamic to an otherwise static *Page* content.
+
+h2. Installation
+
+In your RefineryCMS application Gemfile, add:
+
+<pre>
+gem 'refinerycms-hooks', :git => 'git://github.com/ahadinyoto/refinerycms-hooks.git'
+</pre>
+
+Then run *bundle install*.
+
+h2. Just to give you the idea
+
+In your *Page* "Body" you can add a markup like this {{test1}} along with other texts. Then you must have a hook called "test1" (will be explained below) that, say, produces a text "Hello". When an end user opens that particular page, the user will see "Hello" in place of the {{test1}} markup. Simple.
+
+How the {{test1}} markup should behave is really up to your code. Here's how to do it.
+
+h2. Writing your hook
+
+In your RefineryCMS application root directory, run generator to create the hook.
+
+<pre>
+rails generate refinery:hooks:scaffold
+</pre>
+
+Two files will be created:
+
+<pre>
+app/hooks/test1.rb
+app/hooks/views/test1.html.erb
+</pre>
+
+The _app/hooks/test1.rb_ is to write the logic - I call this _Hook Controller_, and the other is to write the views similar to Rails' Views.
+
+Any instance variables defined in _Hook Controller_ will be automatically available in the view (in this case: _test1.html.erb_). Again, just like Rails' Views.
+
+If you'd rather not using the view but render a text directly from _Hook Controller_, you can use:
+
+<pre>
+def hook(args)
+  # ... your codes
+  render_hook("<b>Hello</b>")
+end
+</pre>
+
+h2. Passing arguments
+
+You can pass arguments to your hook for greater flexibility:
+
+In your *Page* Body, say, you add ("one,two" after "|" are arguments):
+
+<pre>
+{{test1|one,two}}
+</pre>
+
+Then in your _Hook Controller_, you can simply access those arguments with:
+
+<pre>
+def hook(args)
+  # args = ["one", "two"]
+  render_hook("#{args[0]} and #{args[1]}")
+end
+</pre>
+
+h2. Changing the hooks path
+
+By default, the hooks are generated in the application's _app/hooks_. You can change them at _config/initializers/refinery/hooks.rb_.
+
+
