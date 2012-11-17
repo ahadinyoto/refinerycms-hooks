@@ -93,3 +93,4 @@ capybara-*html
 vendor/extensions/**/spec/dummy
 spec/dummy
 
+Gemfile.lock

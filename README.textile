@@ -1,14 +1,24 @@
 h1. Hooks extension for Refinery CMS.
 
-A "RefineryCMS":http://refinerycms.com/ extension to make *Page* a bit more dynamic.
+A "Refinery CMS":http://refinerycms.com/ extension to make *Page* a bit more dynamic.
 
-The "hook" is a simple markup that you can put in a *Page* "Body" and "Side Body", and based on the hook that you write, the markup will be rendered accordingly.
+In Refinery CMS, a *Page* is where you put your content. The Page, however, is static. Occasionally, having dynamic behavior in the content is needed. For instance, if I were to use the Page to display a product with a price. It'd be nice if I can display the price dynamically based on the latest update in my back-end database.
 
-The hook simply adds a bit of intelligent and makes it more dynamic to an otherwise static *Page* content.
+The "hook" will do just that. It allows you to put a simple markup with a tag - {{tag}} - in a *Page* "Body" and "Side Body", and based on the code that you write in the hook, the markup will be rendered accordingly.
+
+Therefore, in my *Page* "Body, I can put something like:
+
+<pre>
+Product "A", price: {{price|productA}}
+</pre>
+
+The "price" hook that you've written will then be called, and its result will be printed. How to write hook is documented below. It's really easy.
+
+This hook is simply to add a bit of intelligent and makes it more dynamic to an otherwise static *Page* content.
 
 h2. Installation
 
-In your RefineryCMS application Gemfile, add:
+In your Refinery CMS application Gemfile, add:
 
 <pre>
 gem 'refinerycms-hooks', :git => 'git://github.com/ahadinyoto/refinerycms-hooks.git'
@@ -16,18 +26,12 @@ gem 'refinerycms-hooks', :git => 'git://github.com/ahadinyoto/refinerycms-hooks.
 
 Then run *bundle install*.
 
-h2. Just to give you the idea
-
-In your *Page* "Body" you can add a markup like this {{test1}} along with other texts. Then you must have a hook called "test1" (will be explained below) that, say, produces a text "Hello". When an end user opens that particular page, the user will see "Hello" in place of the {{test1}} markup. Simple.
-
-How the {{test1}} markup should behave is really up to your code. Here's how to do it.
-
 h2. Writing your hook
 
-In your RefineryCMS application root directory, run generator to create the hook.
+In your Refinery CMS application root directory, run generator to create the hook.
 
 <pre>
-rails generate refinery:hooks:scaffold
+rails generate refinery:hooks:scaffold Test1Hook test1
 </pre>
 
 Two files will be created:
@@ -73,4 +77,14 @@ h2. Changing the hooks path
 
 By default, the hooks are generated in the application's _app/hooks_. You can change them at _config/initializers/refinery/hooks.rb_.
 
+h2. Disabling the hook
 
+You can go to Refinery CMS Admin page to disable a hook (or even put an alternate message for the disabled hook).
+
+If you really need to totally remove the hook, you can run:
+
+<pre>
+rails destroy refinery:hooks:scaffold Test1Hook test1
+</pre>
+
+Removing the files alone is not sufficient as the hook will still be registered with Refinery CMS.

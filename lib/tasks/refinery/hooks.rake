@@ -2,7 +2,6 @@ namespace :refinery do
 
   namespace :hooks do
 
-    # call this task by running: rake refinery:hooks:my_task
     desc "Prepare test cases"
     # :environment needed for Rails environment to be loaded
     task :test_prepare => :environment do

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    refinerycms-hooks (0.0)
+    refinerycms-hooks (0.1)
       refinerycms-core (~> 2.0.8)
 
 GEM
