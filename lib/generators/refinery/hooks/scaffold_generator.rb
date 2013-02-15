@@ -7,7 +7,7 @@ module Refinery
 
       def register
         if behavior == :invoke
-          @hook = Hook.register_hook({:name => name, :tag => tag, :status => "enabled"}) 
+          @hook = Refinery::Hooks::Hook.register_hook({:name => name, :tag => tag, :status => "enabled"}) 
 
           # Class name to be generated
           @klass = @hook.get_class_string.gsub /(\w+::)+(\w+)$/ do |m|
