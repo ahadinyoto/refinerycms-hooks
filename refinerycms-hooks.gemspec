@@ -4,12 +4,12 @@ Gem::Specification.new do |s|
   s.author            = "Andrew Hadinyoto"
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-hooks'
-  s.version           = '0.1'
+  s.version           = '0.2'
   s.description       = 'Ruby on Rails Hooks extension for Refinery CMS'
   s.date              = '2012-11-17'
   s.summary           = 'Add simple markup {{tag}} to Refinery CMS Page'
   s.require_paths     = %w(lib)
-  s.files             = Dir["{app,config,db,lib}/**/*"] + ["readme.textile"]
+  s.files             = Dir["{app,config,db,lib}/**/*"] + ["README.textile"]
 
   # Runtime dependencies
   s.add_dependency             'refinerycms-core',    '~> 2.0.8'

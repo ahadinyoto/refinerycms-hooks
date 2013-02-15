@@ -1,5 +1,10 @@
 module Refinery
   class HooksGenerator < Rails::Generators::Base
+    source_root File.expand_path('../templates', __FILE__)
+    def copy_initializer
+      copy_file 'hooks.rb', "config/initializers/refinery/hooks.rb"
+      empty_directory File.join('app', 'hooks', 'views')
+    end
 
     def rake_db
       rake("refinery_hooks:install:migrations")
