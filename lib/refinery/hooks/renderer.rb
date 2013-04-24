@@ -7,9 +7,8 @@ module Refinery
     module Renderer
       protected
       def render(*args, &block)
-        unless @page.nil?
+        unless @page.nil? or params[:controller].starts_with?("refinery/admin")
           @page.parts.each do |page|
-            #page.body.gsub! /\{\{([\w\-]+)\}\}/ do |m|
             unless page.body.nil?
               page.body.gsub! /(\{\{([\w\-]+)(\s*\|\s*[\w, \t'"]+)?\}\})/ do |m|
                 begin
