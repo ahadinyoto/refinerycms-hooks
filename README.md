@@ -1,10 +1,11 @@
-h1. Hooks extension for Refinery CMS.
+Hooks extension for Refinery CMS
+================================
 
 A "Refinery CMS":http://refinerycms.com/ extension to make *Page* a bit more dynamic.
 
-In Refinery CMS, a *Page* is where you put your content. The Page, however, is static. Occasionally, having dynamic behavior in the content is needed. For instance, if I were to use the Page to display a product with a price. It'd be nice if I can display the price dynamically based on the latest update in my back-end database.
+In Refinery CMS, a **Page** is where you put your content. The Page, however, is static. Occasionally, having dynamic behavior in the content is needed. For instance, if I were to use the Page to display a product with a price. It'd be nice if I can display the price dynamically based on the latest update in my back-end database.
 
-The "hook" will do just that. It allows you to put a simple markup with a tag - {{tag}} - in a *Page* "Body" and "Side Body", and based on the code that you write in the hook, the markup will be rendered accordingly.
+The "hook" will do just that. It allows you to put a simple markup with a tag - {{tag}} - in a **Page** "Body" and "Side Body", and based on the code that you write in the hook, the markup will be rendered accordingly.
 
 Therefore, in my *Page* "Body, I can put something like:
 
@@ -12,11 +13,12 @@ Therefore, in my *Page* "Body, I can put something like:
 Product "A", price: {{price|productA}}
 </pre>
 
-The "price" hook that you've written will then be called, and its result will be printed. How to write hook is documented below. It's really easy.
+The "price" hook code will be called, and its result will be printed. How to write hook is documented below. It's really easy.
 
 This hook is simply to add a bit of intelligent and makes it more dynamic to an otherwise static *Page* content.
 
-h2. Installation
+Installation
+------------
 
 In your Refinery CMS application Gemfile, add:
 
@@ -24,9 +26,16 @@ In your Refinery CMS application Gemfile, add:
 gem 'refinerycms-hooks', :git => 'git://github.com/ahadinyoto/refinerycms-hooks.git'
 </pre>
 
-Then run *bundle install*.
+Then run
 
-h2. Writing your hook
+<pre>
+bundle install
+rails g refinery:hooks
+bundle exec rake db:migrate
+</pre>
+
+Writing your hook
+-----------------
 
 In your Refinery CMS application root directory, run generator to create the hook.
 
@@ -47,14 +56,15 @@ Any instance variables defined in _Hook Controller_ will be automatically availa
 
 If you'd rather not using the view but render a text directly from _Hook Controller_, you can use:
 
-<pre>
+```ruby
 def hook(args)
   # ... your codes
   render_hook("<b>Hello</b>")
 end
-</pre>
+```
 
-h2. Passing arguments
+Passing arguments
+-----------------
 
 You can pass arguments to your hook for greater flexibility:
 
@@ -66,18 +76,20 @@ In your *Page* Body, say, you add ("one,two" after "|" are arguments):
 
 Then in your _Hook Controller_, you can simply access those arguments with:
 
-<pre>
+```ruby
 def hook(args)
   # args = ["one", "two"]
   render_hook("#{args[0]} and #{args[1]}")
 end
-</pre>
+```
 
-h2. Changing the hooks path
+Changing the hooks path
+-----------------------
 
 By default, the hooks are generated in the application's _app/hooks_. You can change them at _config/initializers/refinery/hooks.rb_.
 
-h2. Disabling the hook
+Disabling the hook
+------------------
 
 You can go to Refinery CMS Admin page to disable a hook (or even put an alternate message for the disabled hook).
 

@@ -7,7 +7,7 @@ describe Refinery do
       describe "hooks" do
         login_refinery_user
 
-        describe "hooks list" do
+        describe "list all the hooks" do
           it "should show all the hooks" do
             visit refinery.hooks_admin_hooks_path
             page.should have_content("Test1")
@@ -16,7 +16,7 @@ describe Refinery do
           end
         end
 
-        describe "hooks usage" do
+        describe "usage" do
           it "should have the tag given by Test1 - direct using render_hook" do
             visit refinery.new_admin_page_path
             fill_in "Title", :with => "Test1"
@@ -60,6 +60,17 @@ describe Refinery do
 
             visit '/test3'
             page.should have_content("one|two")
+          end
+
+          it "should not convert the tag in edit mode" do
+            visit refinery.new_admin_page_path
+            fill_in "Title", :with => "Testedithook"
+            fill_in "page_parts_attributes_0_body", :with => "{{test1}}"
+            click_button "Save"
+
+            visit refinery.edit_admin_page_path("testedithook")
+            save_and_open_page
+            page.should have_content("{{test1}}")
           end
 
         end

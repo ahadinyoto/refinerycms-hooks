@@ -13,12 +13,17 @@ platforms :jruby do
 end
 
 platforms :ruby do
+  group :development, :test do
   gem 'sqlite3'
+end
   gem 'mysql2'
   gem 'pg'
 end
 
 group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
   gem 'refinerycms-testing', '~> 2.0.3'
   gem 'guard-rspec', '~> 0.7.0'
   gem 'launchy'

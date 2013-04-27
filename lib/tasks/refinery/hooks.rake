@@ -5,12 +5,13 @@ namespace :refinery do
     desc "Prepare test cases"
     # :environment needed for Rails environment to be loaded
     task :test_prepare => :environment do
+      puts Rails.env.test?
       rm_rf "spec/dummy/app/hooks"
-      rm "spec/dummy/app/controllers/application_controller.rb"
+      # rm "spec/dummy/app/controllers/application_controller.rb"
 
       # Copy the application_controller loaded with hook renderer
       #cp "spec/files/application_controller.rb", "spec/dummy/app/controllers/application_controller.rb"
-      cp "spec/files/hooks.rb", "spec/dummy/config/initializers/refinery"
+      cp "lib/generators/refinery/templates/hooks.rb", "spec/dummy/config/initializers/refinery"
 
       # Copy the tests hooks
       mkdir "spec/dummy/app/hooks"
@@ -18,12 +19,16 @@ namespace :refinery do
       cp "spec/files/test2.rb", "spec/dummy/app/hooks"
       cp "spec/files/test3.rb", "spec/dummy/app/hooks"
       cp_r "spec/files/views", "spec/dummy/app/hooks"
+
+      print "Registering test hooks..."
       Refinery::Hooks::Hook.register_hook({:name => "Test1", :tag => "test1"})
       Refinery::Hooks::Hook.register_hook({:name => "Test2", :tag => "test2"})
       Refinery::Hooks::Hook.register_hook({:name => "Test3", :tag => "test3"})
+      puts "done"
     end
 
     task :test_destroy => :environment do
+      puts "Remove test hooks"
       rm_rf "spec/dummy/app/hooks"
       Refinery::Hooks::Hook.deregister_hook("test1")
       Refinery::Hooks::Hook.deregister_hook("test2")
